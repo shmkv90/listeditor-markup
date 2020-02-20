@@ -1,0 +1,25 @@
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap&subset=cyrillic-ext');
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+@font-face {
+  font-family: 'Rouble';
+  font-weight: 400;
+  font-display: swap;
+  src: url('/i/fonts/rouble.eot');
+  src: url('/i/fonts/rouble.eot') format('embedded-opentype'),
+       url('/i/fonts/rouble.woff2') format('woff2'),
+       url('/i/fonts/rouble.woff') format('woff'),
+       url('/i/fonts/rouble.otf') format('opentype'),
+       url('/i/fonts/rouble.svg#rouble') format('svg');
+}
+
+.rouble {
+  font-family: 'Rouble';
+  &:before {
+    content: 'i';
+  }
+}

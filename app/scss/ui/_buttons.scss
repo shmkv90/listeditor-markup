@@ -1,0 +1,178 @@
+
+// global breakpoints
+// ------------------
+
+$lg:  1280px;
+$md:  1024px;
+$sm:  768px;
+$xs:  480px;
+
+
+// local variables
+// ---------------
+
+$--button--font-size_lg: 18px;
+$--button--font-size_md: 16px;
+$--button--font-size_sm: 15px;
+$--button--font-size_xs: 14px;
+
+$--button--min-width_lg: 250px;
+$--button--min-width_md: 220px;
+$--button--min-width_sm: 200px;
+$--button--min-width_xs: 180px;
+
+$--button--height_lg: 60px;
+$--button--height_md: 54px;
+$--button--height_sm: 48px;
+$--button--height_xs: 44px;
+
+$--button--outer-indent: 8px;
+
+
+
+.btn {
+  display:            inline-block;
+  font-size:          $--button--font-size_lg;
+  min-width:          $--button--min-width_lg;
+  height:             $--button--height_lg;
+  line-height:        $--button--height_lg - 2;
+  transform:          translate(0, 0);
+  white-space:        nowrap;
+  text-decoration:    none;
+  text-align:         center;
+  user-select:        none;
+  outline:            none;
+  margin-bottom:      $--button--outer-indent;
+  margin-right:       $--button--outer-indent;
+  box-sizing:         border-box;
+  border-radius:      $--button--height_lg / 2;
+  padding-left:       32px;
+  padding-right:      32px;
+  transition: .3s;
+  cursor: pointer;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  @media only screen and (max-width: $md) {
+    min-width:        $--button--min-width_md;
+    height:           $--button--height_md;
+    line-height:      $--button--height_md - 2;
+    font-size:        $--button--font-size_md;
+    border-radius:    $--button--height_md / 2;
+    padding-left:     16px;
+    padding-right:    16px;
+  }
+
+  @media only screen and (max-width: $sm) {
+    min-width:        $--button--min-width_sm;
+    height:           $--button--height_sm;
+    line-height:      $--button--height_sm - 2;
+    font-size:        $--button--font-size_sm;
+    border-radius:    $--button--height_sm / 2;
+    padding-left:     8px;
+    padding-right:    8px;
+  }
+
+  @media only screen and (max-width: $xs) {
+    min-width:        $--button--min-width_xs;
+    height:           $--button--height_xs;
+    line-height:      $--button--height_xs - 2;
+    font-size:        $--button--font-size_xs;
+    border-radius:    $--button--height_xs / 2;
+  }
+}
+
+.btn-solid-black {
+  @extend .btn;
+  color: $white;
+  background-color: $black;
+
+  &:hover {
+    color: $white;
+    background-color: $blue;
+  }
+}
+
+.btn-solid-blue {
+  @extend .btn;
+  color: $white;
+  background-color: $blue;
+  border: 1px solid $blue;
+
+  &:hover {
+    color: $white;
+    background-color: $light-blue;
+    border: 1px solid $light-blue;
+  }
+}
+
+.btn-buy {
+  @extend .btn;
+  color: $white;
+  background-color: $black;
+  border: 1px solid $black;
+
+  &:hover {
+    color: $white;
+    background-color: $blue;
+  }
+}
+
+.btn-back {
+  border: 1px solid $gray;
+  display: block;
+  box-sizing: border-box;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 40px auto;
+  background-image: url('/i/icon-back.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 12px 20px;
+  background-color: rgba(255,255,255,.92);
+  transition-duration: .15s;
+  transition-property: border;
+
+  &:hover {
+    border: 1px solid $black;
+  }
+
+  @media only screen and (max-width: $sm) {
+    width: 50px;
+    height: 50px;
+    background-size: 10px 17px;
+  }
+  @media only screen and (max-width: $xs) {
+    width: 40px;
+    height: 40px;
+    background-size: 8px 14px;
+  }
+}
+
+.btn-outline-dark {
+  @extend .btn;
+  color: $white;
+  border: 1px solid $gray;
+  background-color: $black;
+
+  &:hover {
+    color: $blue;
+    border: 1px solid $blue;
+  }
+}
+
+
+// UX: ну такое себе - выглядит довольно громоздко
+// надо подумать стоит ли продолжать в том же духе
+// или получится скатиться с boostrap или другой Front-end фреймворк,
+// претендующий на звание лучшего и самого неповторимого
+//
+// проблема заключается в том что использование вреймфорка убивает
+// одно из самых очевидных преимуществ CSS - простоту и читабельность
+//
+// я думаю надо изучить возможности других фреймворков
+// перед началом использования. в частности поглубже изучить bootstrap
+// а еще можно изучить CodyHouse Framefork, хотя вообще-то он очень даже неплохой

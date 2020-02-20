@@ -1,0 +1,73 @@
+.spinner {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0 32px;
+  position: relative;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 2px;
+  border: 2px solid $gray;
+  color: $gray;
+  background-color: transparent;
+  border-radius: 18px;
+  font-weight: 300;
+
+  .inp {
+    vertical-align: middle;
+    border: none;
+    width: 70px;
+    padding: 0;
+    text-align: center;
+    display: inline-block;
+    font-size: 18px;
+    text-align: center;
+    outline: none;
+  }
+
+  .spinner-up,
+  .spinner-down {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .spinner-down {
+    left: 0;
+  }
+  .spinner-up {
+    right: 0;
+  }
+  .spinner-btn {
+    @extend .btn;
+    box-sizing: border-box;
+    vertical-align: middle;
+    width: 35px; height: 35px;
+    line-height: 35px;
+    text-align: center;
+    border: 1px solid transparent;
+    background: transparent;
+    border-radius: 50%;
+    font-size: 18px;
+    padding: 0;
+    color: #4d4d4d;
+    transition: .3s;
+  }
+  .spinner-btn:hover{
+    background-color: $blue;
+    color: $white;
+  }
+
+  .spinner-unit {
+    position: absolute;
+    left: 50%; top: 100%;
+    transform: translateX(-50%);
+    margin-top: 3px;
+    font-size: 1.4rem;
+  }
+
+  @media only screen and (max-width: 480px) {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
