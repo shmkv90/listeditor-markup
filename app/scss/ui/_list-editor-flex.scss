@@ -1,94 +1,125 @@
 
-.list-editor-flex {
-  display: block;
-  background-color: white;
-  border: 1px solid #9a9a9a;
-  border-radius: 3px;
-  overflow: hidden;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,.085),
-              0 6px 16px 0 rgba(0,0,0,.125);
+// The main idea of flex-grid and support cross-browser prefixes for IE10
+// https://github.com/kristoferjoseph/flexboxgrid/blob/master/dist/flexboxgrid.css
 
-  .grid {
 
-    .row {
-      box-sizing: border-box;
-      display: flex;
-      flex: 0 1 auto;
-      flex-direction: row;
-      flex-wrap: wrap;
+.ListEditor {
 
-      height: 50px;
-      border-bottom: 1px solid #dadada;
-      align-items: center;
-    }
-
-    .col {
-      // outline: 2px solid orange;
-      box-sizing: border-box;
-      padding-left: 0.5em;
-      padding-right: 0.5em;
-    }
-    
-
-    .col-1 {
-      flex-basis: 8.33333333%;
-      max-width: 8.33333333%;
-    }
-
-    .col-2 {
-      flex-basis: 16.66666667%;
-      max-width: 16.66666667%;
-    }
-
-    .col-3 {
-      flex-basis: 25%;
-      max-width: 25%;
-    }
-
-    .col-4 {
-      flex-basis: 33.33333333%;
-      max-width: 33.33333333%;
-    }
-
-    .col-5 {
-      flex-basis: 41.66666667%;
-      max-width: 41.66666667%;
-    }
-
-    .col-6 {
-      flex-basis: 50%;
-      max-width: 50%;
-    }
-
-    .col-7 {
-      flex-basis: 58.33333333%;
-      max-width: 58.33333333%;
-    }
-
-    .col-8 {
-      flex-basis: 66.66666667%;
-      max-width: 66.66666667%;
-    }
-
-    .col-9 {
-      flex-basis: 75%;
-      max-width: 75%;
-    }
-
-    .col-10 {
-      flex-basis: 83.33333333%;
-      max-width: 83.33333333%;
-    }
-
-    .col-11 {
-      flex-basis: 91.66666667%;
-      max-width: 91.66666667%;
-    }
-
-    .col-12 {
-      flex-basis: 100%;
-      max-width: 100%;
-    }
+  @mixin flex-cols ($col) {
+    flex-basis: $col * 25px;
+    max-width: $col * 25px;
+  }
+  @mixin flex-width ($w) {
+    flex-basis: $w;
+    max-width: $w;
   }
 
+  // Неизменная часть
+  // ----------------
+  .list__flex {
+    .item {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    // Дорабатываем шаблоны
+    // -------------
+    &.template-1 {
+      font-size: 15px;
+      color: #333333;
+      overflow: hidden;
+      border-radius: 3px;
+      margin-bottom: 25px;
+      box-shadow: 0 0 2px 1px #9a9a9a,
+                  0 2px 4px 0 rgba(0,0,0,.085),
+                  0 3px 16px 0 rgba(0,0,0,.125);
+
+      .item {
+        // реализация через колонки
+        .cell-a { @include flex-cols(2); }
+        .cell-b { @include flex-cols(2); }
+        .cell-c { @include flex-cols(14); }
+        .cell-d { @include flex-cols (7); }
+        .cell-e { @include flex-cols (5); }
+        .cell-f { @include flex-cols (9); }
+        .cell-y { @include flex-cols (4); }
+        .cell-x { @include flex-cols (2); }
+
+        // альтернативная реализация через пиксели (кратно 25px)
+        // .cell-a { @include flex-width (50px); }
+        // .cell-b { @include flex-width (50px); }
+        // .cell-c { @include flex-width (350px); }
+        // .cell-d { @include flex-width (175px); }
+        // .cell-e { @include flex-width (125px); }
+        // .cell-f { @include flex-width (225px); }
+        // .cell-y { @include flex-width (100px); }
+        // .cell-x { @include flex-width (50px); }
+        
+        height: 65px;
+        background-color: white;
+        border-bottom: 1px solid #dadada;
+
+        .cell-a {
+          padding-left: 1.3em;
+        }
+        .link {
+          color: rgb(0, 184, 0);
+          border-bottom: 1px dotted rgb(0, 184, 0);
+          text-decoration: none;
+        }
+        .inactive {
+          color: #bcbcbc;
+        }
+        &:nth-of-type(2n + 1) {
+          background-color: #fafafa;
+        }
+      }
+    }
+
+
+    &.template-2 {
+
+      .item {
+        .cell-a { @include flex-cols(11); }
+        .cell-b { @include flex-cols(11); }
+        .cell-c { @include flex-cols(11); }
+        .cell-d { @include flex-cols (3); }
+        .cell-e { @include flex-cols (3); }
+        .cell-y { @include flex-cols (4); }
+        .cell-x { @include flex-cols (2); }
+        .cell-f { @include flex-cols (7); }
+        .cell-g { @include flex-cols (32); }
+        .cell-h { @include flex-cols (6); }
+
+        font-size: 15px;
+        color: #333333;
+        overflow: hidden;
+        border-radius: 3px;
+        background-color: white;
+        margin-bottom: 20px;
+        box-shadow: 0 0 2px 1px #9a9a9a,
+                    0 2px 4px 0 rgba(0,0,0,.065);
+
+        .cell-a, .cell-b, .cell-c, .cell-d, .cell-e, .cell-y, .cell-x {
+          height: 75px;
+          border-bottom: 1px solid #dadada;
+        }
+        .cell-f, .cell-g, .cell-h {
+          height: 75px;
+        }
+        .link {
+          color: rgb(0, 184, 0);
+          border-bottom: 1px dotted rgb(0, 184, 0);
+          text-decoration: none;
+        }
+        strong {
+          color: #000;
+          font-weight: bold;
+        }
+        .cell-f {
+          padding-left: 0.75em;
+        }
+      }
+    }
+  }
 }

@@ -5,6 +5,7 @@
 
 @import "common";
 @import "overrides";
+@import "ui/list-editor";
 @import "ui/list-editor-flex";
 @import "ui/list-editor-grid";
 
@@ -25,15 +26,44 @@ body {
   background: rgb(238,174,202);
   background: linear-gradient(60deg, rgba(238,174,202,0.66) 0%, rgba(148,187,233,0.66) 100%);
   padding: 1em;
-  height: 100%;
+  min-height: 100%;
   box-sizing: border-box;
   transition: .66s;
   opacity: 0;
   margin-right: auto;
   margin-left: auto;
-  padding-top: 5em;
+  padding-top: 1.5em;
   padding-bottom: 2.5em;
 }
 body.is-initialised {
   opacity: 1;
+}
+nav {
+  padding-bottom: 2em;
+  padding-right: 4em;
+
+  ul {
+    display: flex;
+    justify-content: flex-end;
+
+    li {
+      padding-left: 1em;
+      padding-right: 1em;
+
+      a {
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      &.active {
+        a {
+          color: rgb(27, 114, 255);
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
 }
