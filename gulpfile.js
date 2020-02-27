@@ -45,15 +45,6 @@ gulp.task('styles', function() {
 gulp.task('scripts', function() {
 	return gulp.src([
 		'app/libs/jquery/dist/jquery.min.js',
-		'app/libs/swiper/swiper.min.js',
-		'app/libs/fullpage/scrolloverflow.min.js',
-		'app/libs/fullpage/fullpage.js',
-		'app/libs/slick/slick-1.8.0.js',
-		'app/libs/maskedinput/maskedinput.js',
-		'app/libs/perfect-scrollbar/perfect-scrollbar.js',
-		'app/libs/fancybox/jquery.fancybox.min.js',
-		'app/libs/ias/jquery-ias.min.js',
-		'app/libs/selectric/jquery.selectric.min.js',
 		'app/libs/jquery/jquery.mousewheel.js',
 
 		'app/js/common.js', // Always at the end

@@ -9,21 +9,17 @@
     flex-basis: $col * 25px;
     max-width: $col * 25px;
   }
-  @mixin flex-width ($w) {
-    flex-basis: $w;
-    max-width: $w;
-  }
+  // @mixin flex-width ($w) {
+  //   flex-basis: $w;
+  //   max-width: $w;
+  // }
 
-  // Неизменная часть
-  // ----------------
   .list__flex {
     .item {
       display: flex;
       flex-wrap: wrap;
     }
 
-    // Дорабатываем шаблоны
-    // -------------
     &.template-1 {
       font-size: 15px;
       color: #333333;
@@ -35,7 +31,7 @@
                   0 3px 16px 0 rgba(0,0,0,.125);
 
       .item {
-        // реализация через колонки
+        // columns implementation
         .cell-a { @include flex-cols(2); }
         .cell-b { @include flex-cols(2); }
         .cell-c { @include flex-cols(14); }
@@ -45,7 +41,7 @@
         .cell-y { @include flex-cols (4); }
         .cell-x { @include flex-cols (2); }
 
-        // альтернативная реализация через пиксели (кратно 25px)
+        // alternate implementation (n * 25px)
         // .cell-a { @include flex-width (50px); }
         // .cell-b { @include flex-width (50px); }
         // .cell-c { @include flex-width (350px); }
@@ -118,6 +114,101 @@
         }
         .cell-f {
           padding-left: 0.75em;
+        }
+      }
+    }
+
+
+    &.template-3 {
+      font-size: 15px;
+      color: #333333;
+
+      .item {
+        background-color: white;
+        margin-bottom: 25px;
+        overflow: hidden;
+        border-radius: 1px;
+        box-shadow: 0 0 2px 1px #9a9a9a,
+                    0 2px 4px 0 rgba(0,0,0,.085),
+                    0 3px 16px 0 rgba(0,0,0,.125);
+
+        .cell-a { @include flex-cols(38); }
+        .cell-y { @include flex-cols (5); }
+        .cell-x { @include flex-cols (2); }
+        .cell-b { @include flex-cols(5); }
+        .cell-c { @include flex-cols(40); }
+
+        .cell-a, .cell-y, .cell-x {
+          height: 38px;
+          border-bottom: 1px solid #dadada;
+        }
+        .cell-b, .cell-c {
+          height: 200px;
+          line-height: 1.25;
+          padding-top: 1em;
+        }
+        .cell-a {
+          padding-left: 1.25em;
+        }
+        .link {
+          color: rgb(0, 184, 0);
+          border-bottom: 1px dotted rgb(0, 184, 0);
+          text-decoration: none;
+        }
+        strong {
+          color: #000;
+          font-weight: bold;
+        }
+      }
+    }
+
+
+    &.template-4 {
+      font-size: 16px;
+      color: #333333;
+
+      .item {
+        background-color: white;
+        margin-bottom: 25px;
+        overflow: hidden;
+        border-radius: 1px;
+        box-shadow: 0 0 2px 1px #9a9a9a,
+                    0 2px 4px 0 rgba(0,0,0,.085),
+                    0 3px 16px 0 rgba(0,0,0,.125);
+
+        .cell-a { @include flex-cols(9); }
+        .cell-b { @include flex-cols(25); }
+        .cell-c { @include flex-cols(4); }
+        .cell-y { @include flex-cols(4); }
+        .cell-x { @include flex-cols(3); }
+
+        .cell-a, .cell-b, .cell-c, .cell-d, .cell-y, .cell-x {
+          align-items: flex-start;
+          padding: 25px 20px;
+          height: 215px;
+        }
+        .cell-b {
+          padding-top: 20px;
+        }
+        .cell-c {
+          justify-content: flex-end;
+          padding-right: 0;
+          padding-top: 15px;
+        }
+        .cell-y {
+          padding-top: 22px;
+        }
+        .cell-x {
+          padding-top: 15px;
+        }
+        .link {
+          color: rgb(0, 184, 0);
+          border-bottom: 1px dotted rgb(0, 184, 0);
+          text-decoration: none;
+        }
+        strong {
+          color: #000;
+          font-weight: bold;
         }
       }
     }

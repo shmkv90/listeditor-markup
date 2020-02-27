@@ -9,19 +9,12 @@
 @import "ui/list-editor-flex";
 @import "ui/list-editor-grid";
 
-// @import "ui/buttons";
-// @import "ui/forms";
-// @import "ui/vitrine";
-// @import "ui/tabs";
-// @import "ui/menu";
-// @import "ui/spinner";
-// @import "ui/swiper";
-
 
 html {
   background-color: rgba(130, 60, 255, 0.5);
   height: 100%;
 }
+
 body {
   background: rgb(238,174,202);
   background: linear-gradient(60deg, rgba(238,174,202,0.66) 0%, rgba(148,187,233,0.66) 100%);
@@ -35,9 +28,11 @@ body {
   padding-top: 1.5em;
   padding-bottom: 2.5em;
 }
+
 body.is-initialised {
   opacity: 1;
 }
+
 nav {
   padding-bottom: 2em;
   padding-right: 4em;

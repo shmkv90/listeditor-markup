@@ -1,18 +1,34 @@
 
+// Problems that I stumbled with Grid Layout in IE 11
+// https://css-tricks.com/css-grid-in-ie-css-grid-and-the-new-autoprefixer/
+// https://stackoverflow.com/questions/45786788/css-grid-layout-not-working-in-ie11-even-with-prefixes
+
 .ListEditor {
 
-  // Неизменная часть
-  // ----------------
+  // @mixin grid-column-span ($start, $col) {
+  //   grid-column: $start / span $col;
+  //   -ms-grid-column-span: $col;
+  //   -ms-grid-column: $start;
+  // }
+  // @mixin grid-row-span ($start, $col) {
+  //   grid-row: $start / span $col;
+  //   -ms-grid-row-span: $col;
+  //   -ms-grid-row: $start;
+  // }
+
   .list__grid {
     .item {
       // 45 колонок по 25px
       // 45 * 25 = 1125px
       display: grid;
       grid-auto-columns: 25px;
+
+      // easy way, but it won't work in IE11 :(
+      // display: -ms-grid;
+      // grid-template-columns: repeat( 45, 1fr );
+      // -ms-grid-columns: repeat( 45, 1fr );
     }
 
-    // Дорабатываем шаблоны
-    // -------------
     &.template-1 {
       font-size: 15px;
       color: #333333;
@@ -24,13 +40,7 @@
                   0 3px 16px 0 rgba(0,0,0,.125);
 
       .item {
-        grid-auto-rows: 65px; 
-        background-color: white;
-        border-bottom: 1px solid #dadada;
-
-        // сокращенная форма записи
-        // grid-column-start: 1;
-        // grid-column-end: 3;
+        
         .cell-a { grid-column: 1 / 3; }
         .cell-b { grid-column: 3 / 5; }
         .cell-c { grid-column: 5 / 19; }
@@ -40,6 +50,19 @@
         .cell-y { grid-column: 40 / 44; }
         .cell-x { grid-column: 44 / 46; }
 
+        // .cell-a { @include grid-column-span(1, 2); }
+        // .cell-b { @include grid-column-span(3, 2); }
+        // .cell-c { @include grid-column-span(5, 14); }
+        // .cell-d { @include grid-column-span(19, 7); }
+        // .cell-e { @include grid-column-span(26, 5); }
+        // .cell-f { @include grid-column-span(31, 9); }
+        // .cell-y { @include grid-column-span(40, 4); }
+        // .cell-x { @include grid-column-span(44, 2); }
+
+        background-color: white;
+        border-bottom: 1px solid #dadada;
+        grid-auto-rows: 65px;
+        // height: 65px;
 
         .cell-a {
           padding-left: 1.3em;
@@ -73,7 +96,6 @@
         .cell-g { grid-column: 8 / 40; }
         .cell-h { grid-column: 40 / 46; }
 
-
         font-size: 15px;
         color: #333333;
         overflow: hidden;
@@ -101,6 +123,102 @@
         }
         .cell-f {
           padding-left: 0.75em;
+        }
+      }
+    }
+    
+
+    &.template-3 {
+      font-size: 15px;
+      color: #333333;
+
+      .item {
+        background-color: white;
+        margin-bottom: 25px;
+        overflow: hidden;
+        border-radius: 1px;
+        box-shadow: 0 0 2px 1px #9a9a9a,
+                    0 2px 4px 0 rgba(0,0,0,.085),
+                    0 3px 16px 0 rgba(0,0,0,.125);
+
+        .cell-a { grid-column: 1 / 38; }
+        .cell-y { grid-column: 38 / 43; }
+        .cell-x { grid-column: 43 / 46; }
+        .cell-b { grid-column: 1 / 6; }
+        .cell-c { grid-column: 6 / 46; }
+
+        .cell-a, .cell-y, .cell-x {
+          height: 38px;
+          border-bottom: 1px solid #dadada;
+        }
+        .cell-b, .cell-c {
+          height: 200px;
+          line-height: 1.25;
+          padding-top: 1em;
+        }
+        .cell-a {
+          padding-left: 1.25em;
+        }
+        .link {
+          color: rgb(0, 184, 0);
+          border-bottom: 1px dotted rgb(0, 184, 0);
+          text-decoration: none;
+        }
+        strong {
+          color: #000;
+          font-weight: bold;
+        }
+
+      }
+    }
+
+
+    &.template-4 {
+      font-size: 16px;
+      color: #333333;
+
+      .item {
+        background-color: white;
+        margin-bottom: 25px;
+        overflow: hidden;
+        border-radius: 1px;
+        box-shadow: 0 0 2px 1px #9a9a9a,
+                    0 2px 4px 0 rgba(0,0,0,.085),
+                    0 3px 16px 0 rgba(0,0,0,.125);
+
+        .cell-a { grid-column: 1 / 10; }
+        .cell-b { grid-column: 10 / 35; }
+        .cell-c { grid-column: 35 / 39; }
+        .cell-y { grid-column: 39 / 43; }
+        .cell-x { grid-column: 43 / 46; }
+
+        .cell-a, .cell-b, .cell-c, .cell-d, .cell-y, .cell-x {
+          align-items: flex-start;
+          padding: 25px 20px;
+          height: 215px;
+        }
+        .cell-b {
+          padding-top: 20px;
+        }
+        .cell-c {
+          justify-content: flex-end;
+          padding-right: 0;
+          padding-top: 15px;
+        }
+        .cell-y {
+          padding-top: 22px;
+        }
+        .cell-x {
+          padding-top: 15px;
+        }
+        .link {
+          color: rgb(0, 184, 0);
+          border-bottom: 1px dotted rgb(0, 184, 0);
+          text-decoration: none;
+        }
+        strong {
+          color: #000;
+          font-weight: bold;
         }
       }
     }
